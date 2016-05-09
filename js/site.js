@@ -6,7 +6,6 @@ $(document).ready(function(){
 	
 	loadServicePreview();
 	
-	
 	//Event bubbling
 	loadAboutEvents();
 });
