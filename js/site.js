@@ -1,4 +1,5 @@
 var bgImage = true;
+var activeServiceItem;
 
 $(document).ready(function(){
 	//DOM Element 1/4
@@ -111,15 +112,22 @@ function loadServiceAnimations(){
 	//click events
 	$('li', serviceArea).each(function (){
 		$(this).click(function (){
+			//check to see if user clicked same object
+			if(activeServiceItem.is($(this))) { return false; }
+			
+			//reset service area
 			servicesAnimationPrep();
 			
-			$(this).children('div').animate(prop1, opt1);
-			hasAnimationRun = true;
+			$(this).children('div').animate(prop1, opt1); //TODO: opacity and blurb spin in.
+			
+			//store active service item
+			activeServiceItem = $(this);
 		});
 	});
 	
 	//open first service offering
-	$('li', serviceArea).filter(':first').children('div').animate(prop1, opt1);
+	activeServiceItem = $('li', serviceArea).filter(':first');
+	activeServiceItem.children('div').animate(prop1, opt1);
 }
 
 function servicesAnimationPrep(){
