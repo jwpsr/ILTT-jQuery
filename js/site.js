@@ -1,8 +1,14 @@
+var bgImage = true;
+
 $(document).ready(function(){
 	//DOM Element 1/4
 	$('header').load('navbar.htm');
 	
 	loadServicePreview();
+	
+	
+	//Event bubbling
+	loadAboutEvents();
 });
 
 function loadServicePreview(){
@@ -38,13 +44,53 @@ function loadServicePreview(){
 	});
 	
 	//add service description click events
-	domElement2.click(showHide);
-	domElement3.click(showHide);
-	domElement4.click(showHide);
+	domElement2.click(serviceSummaryShowHide);
+	domElement3.click(serviceSummaryShowHide);
+	domElement4.click(serviceSummaryShowHide);
 }
 
-function showHide(){
+function serviceSummaryShowHide(){
+	//scoping
+	var serviceOffering = $('main > section > nav > ul > li');
+	
 	//show hide the descriptions without using an li element id
-	$('details').addClass('hidden');
-	$(this).children('details').filter(':first').removeClass('hidden');
+	$('section', serviceOffering).addClass('hidden');
+	$(this).children('section').filter(':first').removeClass('hidden');
+}
+
+function loadAboutEvents(){
+	//scoping
+	var aboutArea = $('div.about');
+	var aboutInfoArea = $('div.aboutInfo');
+	
+	//base event
+	aboutArea.click(function (){
+		if(bgImage){
+			$(this).removeClass('default');
+			$(this).addClass('new');
+			bgImage = false;
+		}
+		else{
+			$(this).removeClass('new');
+			$(this).addClass('default');
+			bgImage = true;
+		}		
+	});
+	
+	//bubbling events on children
+	$('i', aboutArea).each(function (index){
+		index = Number(index) + 1;
+		var that = $('h1', aboutInfoArea).filter(':nth-child(' + index + ')');
+		
+		$(this).click(function (event){
+			if(index % 2 != 0) { //only propagate on odd indexes
+				event.stopPropagation();
+			}
+			that.siblings().hide();
+			that.toggle();
+		})
+	});
+	
+	//context menu
+	//TODO: option to reset
 }

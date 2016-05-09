@@ -24,7 +24,7 @@ li.list-group-item {
     border: none;
 }
 
-details {
+main nav section {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -34,4 +34,76 @@ details {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     background-color: rgba(2, 2, 2, .7);
     padding: 10px;
+}
+
+.fa-5 {
+    font-size: 12em;
+}
+
+.fa-6 {
+   font-size: 20em; 
+}
+
+div.aboutInfo {
+    text-align: center;
+}
+
+div.aboutInfo h1 {
+    display: none;
+}
+
+
+main > section > div.about {
+    position: relative;
+    height: 398px;
+    background-repeat: no-repeat;
+}
+
+div.default {
+    background-image: url('../imgs/me.jpg');
+    background-position: top left;
+    background-size: 100%;
+    color: #f5f5f5;
+}
+
+div.new {
+    background-image: url('../imgs/me2.jpg');
+    background-position: 45% 75%;
+    background-size: 175%;
+    color: black;
+}
+
+main > section > div.about > i {
+    position: absolute;
+    cursor: pointer;
+}
+
+.leftTop {
+    top: 10%;
+    left: 15%;
+}
+
+.leftMiddle {
+    top: 50%;
+    left: 5%;
+}
+
+.leftBottom {
+    top: 85%;
+    left: 15%;
+}
+
+.rightTop {
+    top: 10%;
+    left: 80%;
+}
+
+.rightMiddle {
+    top: 50%;
+    left: 90%;
+}
+
+.rightBottom {
+    top: 85%;
+    left: 80%;
 }
