@@ -8,6 +8,9 @@ $(document).ready(function(){
 	
 	//Event bubbling
 	loadAboutEvents();
+	
+	//Animations
+	loadServiceAnimations();
 });
 
 function loadServicePreview(){
@@ -21,7 +24,7 @@ function loadServicePreview(){
 	var domElement3 = $('li', servicePreview).first().next(); //.filter(':nth-child(2)')
 	
 	//DOM element 4/4
-	var domElement4 = $('main li').filter(':last');
+	var domElement4 = $('main nav li').filter(':last');
 	
 	//add css using object literal
 	domElement2.css({
@@ -87,9 +90,38 @@ function loadAboutEvents(){
 			}
 			that.siblings().hide();
 			that.toggle();
-		})
+		});
 	});
 	
 	//context menu
 	//TODO: option to reset
+}
+
+function loadServiceAnimations(){
+	//scoping
+	var serviceArea = $('main > section > ul');
+	
+	var prop1 = {
+		height: '374px',
+	};
+	var opt1 = {
+		duration: 2000,
+	};
+	
+	//click events
+	$('li', serviceArea).each(function (){
+		$(this).click(function (){
+			servicesAnimationPrep();
+			
+			$(this).children('div').animate(prop1, opt1);
+			hasAnimationRun = true;
+		});
+	});
+	
+	//open first service offering
+	$('li', serviceArea).filter(':first').children('div').animate(prop1, opt1);
+}
+
+function servicesAnimationPrep(){
+	$('main > section > ul div').animate({height: '0'}, {duration: 1000});
 }

@@ -8,20 +8,29 @@ body {
     border-radius: 0;
 }
 
-li.list-group-item {
+.well {
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    border: none;
+}
+
+.fa-5 {
+    font-size: 12em;
+}
+
+.fa-6 {
+   font-size: 20em; 
+}
+
+/*Home*/
+nav li.list-group-item {
     float: left;
     width: 187px;
     height: 500px;
     background-repeat: no-repeat;
     padding: 0;
     cursor: pointer;
-}
-
-.well {
-    max-width: 600px;
-    margin-right: auto;
-    margin-left: auto;
-    border: none;
 }
 
 main nav section {
@@ -36,14 +45,7 @@ main nav section {
     padding: 10px;
 }
 
-.fa-5 {
-    font-size: 12em;
-}
-
-.fa-6 {
-   font-size: 20em; 
-}
-
+/*About*/
 div.aboutInfo {
     text-align: center;
 }
@@ -106,4 +108,41 @@ main > section > div.about > i {
 .rightBottom {
     top: 85%;
     left: 80%;
+}
+
+/*Services*/
+section > ul li.list-group-item {
+    background-color: #222;
+    color: #ddd;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+/*section > ul li:first-child div:first-of-type {*/
+.fashion {
+    background-color: #ddd;
+    background-image: url('../imgs/fashion3.jpg');
+    background-position: 0% 15%;
+    background-repeat: no-repeat;
+    background-size: 140%;
+    /*height: 374px;*/
+}
+
+.wedding {
+    background-color: #ddd;
+    background-image: url('../imgs/wedding1.jpg');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /*height: 374px;*/
+}
+
+.family {
+    background-color: #ddd;
+    background-image: url('../imgs/fam1.jpg');
+    background-position: 0% 40%;
+    background-repeat: no-repeat;
+    background-size: 130%;
+    /*height: 374px;*/
 }
