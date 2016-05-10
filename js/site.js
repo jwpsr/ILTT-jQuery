@@ -118,7 +118,13 @@ function loadServiceAnimations(){
 			//reset service area
 			servicesAnimationPrep();
 			
-			$(this).children('div').animate(prop1, opt1); //TODO: opacity and blurb spin in.
+			$(this).find('div > div').filter(':first-child')
+				.animate(prop1, opt1)
+				.fadeTo('slow', 0.2)
+				.queue(function (next){
+					$(this).siblings('div').fadeIn('slow');
+					next();
+				});
 			
 			//store active service item
 			activeServiceItem = $(this);
@@ -127,9 +133,21 @@ function loadServiceAnimations(){
 	
 	//open first service offering
 	activeServiceItem = $('li', serviceArea).filter(':first');
-	activeServiceItem.children('div').animate(prop1, opt1);
+	activeServiceItem.find('div > div').filter(':first')
+		.animate(prop1, opt1)
+		.animate({ opacity: '0.2' })
+		.queue(function (next){
+			$(this).siblings('div').fadeIn('slow');
+			next();
+		});
 }
 
 function servicesAnimationPrep(){
-	$('main > section > ul div').animate({height: '0'}, {duration: 1000});
+	$('main > section > ul > li').find('div > div').filter(':first-child')
+		.queue(function (next){
+			$(this).siblings('div').hide();
+			next();
+		})
+		.animate({height: '0'}, {duration: 1000})
+		.animate({ opacity: '1.0' });
 }
