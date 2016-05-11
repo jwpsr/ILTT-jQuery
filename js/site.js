@@ -172,6 +172,7 @@ function loadContactEvents(){
 				
 				return deferred.promise();
 			}).done(function(){
+				$('form').trigger('reset');
 				$('form').show();
 				contactIncrementProgress(0);
 				$('.progress').hide();
