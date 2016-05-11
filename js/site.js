@@ -12,6 +12,9 @@ $(document).ready(function(){
 	
 	//Animations
 	loadServiceAnimations();
+	
+	//Defered/Promise/Ajax
+	loadContactEvents();
 });
 
 function loadServicePreview(){
@@ -150,4 +153,61 @@ function servicesAnimationPrep(){
 		})
 		.animate({height: '0'}, {duration: 1000})
 		.animate({ opacity: '1.0' });
+}
+
+function loadContactEvents(){
+	$('form').submit(function(event){
+		event.preventDefault();
+		
+		$.when(contactDeferredPromise())
+			.then(function(value){
+				var deferred = $.Deferred();
+				
+				contactIncrementProgress(value);
+				
+				setTimeout(function (){
+					contactCaptureFormData();
+					deferred.resolve();	
+				}, 2000);			
+				
+				return deferred.promise();
+			}).done(function(){
+				$('form').show();
+				contactIncrementProgress(0);
+				$('.progress').hide();
+			});
+		
+	});
+}
+
+function contactDeferredPromise(){
+	var deferred = $.Deferred();
+	var milliSecond = Math.floor( 10 + Math.random() * 50 );
+	
+	$('.progress').show();
+	$('form').hide();
+	
+	contactIncrementProgress(milliSecond);
+	
+	setTimeout(function (){
+		deferred.resolve(100);
+	}, 5000);
+	
+	return deferred.promise();
+}
+
+function contactIncrementProgress(width){
+	$('.progress-bar').css('width', width + '%');
+	$('.progress-bar span').html(width + '%');
+}
+
+function contactCaptureFormData(){
+	var submission = {
+		Name: $('#inputName').val(),
+		Email: $('input[type=email]').val(),
+		Comments: $('textarea').val(),
+		Newsletter: $('input').filter(':checkbox:checked').val()
+	};
+	
+	console.log(JSON.stringify(submission));
 }

@@ -27,14 +27,18 @@
         <h1><small>Contact</small> Lydia Parker</h1>
       </div>
       <main>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+            <span>0%</span>
+          </div>
+        </div>
         <form class="form-horizontal">
           <div class="form-group">
             <label for="inputName" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="inputName" placeholder="Name">
             </div>
-          </div>
-          
+          </div>          
           <div class="form-group">
             <label for="inputEmail" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-10">
@@ -45,6 +49,15 @@
             <label for="inputComments" class="col-sm-2 control-label">Comments</label>
             <div class="col-sm-10">
               <textarea class="form-control" id="inputComments" placeholder="Please leave us your comments here"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Include me in mailing lists
+                </label>
+              </div>
             </div>
           </div>
           <div class="form-group">
