@@ -114,7 +114,7 @@ function loadServiceAnimations(){
 	var options = {
 		height: prop1.height,
 		animateDuration: opt1.duration,
-		callback: function (next){
+		func: function (next){
 						$(this).siblings('div').fadeIn('slow');
 						next();
 					}
@@ -130,7 +130,8 @@ function loadServiceAnimations(){
 			servicesAnimationPrep();
 			
 			//using custom plugin!
-			$(this).find('div > div').filter(':first-child').animagic(options);
+			$(this).find('div > div').filter(':first-child')
+                .animagic(options, function () { console.log('Callback function executed through animagic plugin.') });
 			
 			//store active service item
 			activeServiceItem = $(this);
