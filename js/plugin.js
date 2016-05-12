@@ -1,13 +1,14 @@
 (function ($) {
-    $.fn.PLUGIN_NAME = function(options){
+    $.fn.animagic = function(options, func){
       var settings = $.extend({
-         prop1: 'defaultValue', //property placeholder
-         prop2: 'defaultValue',
+         height: '374px',
+         backgroundSize: '100%',
+         backgroundPosition: 'top left',
          func: function(){} //calback placeholder
       });
        
       return this.each( function(){
-          $(this).something //do something
+          $(this).css() //do something
           
           settings.func.call(); //execute callback
       });

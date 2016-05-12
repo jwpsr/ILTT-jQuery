@@ -122,12 +122,15 @@ function loadServiceAnimations(){
 			servicesAnimationPrep();
 			
 			$(this).find('div > div').filter(':first-child')
-				.animate(prop1, opt1)
-				.fadeTo('slow', 0.2)
-				.queue(function (next){
-					$(this).siblings('div').fadeIn('slow');
-					next();
-				});
+				.animagic({ height = prop1.height, duration = op1.duration }
+					,function (next){
+						$(this).siblings('div').fadeIn('slow');
+						next()
+					});
+				// .animate(prop1, opt1)
+				// .fadeTo('slow', 0.2)
+				// .queue(
+				// });
 			
 			//store active service item
 			activeServiceItem = $(this);
