@@ -1,16 +1,19 @@
 (function ($) {
-    $.fn.animagic = function(options, func){
+    $.fn.animagic = function(options){
       var settings = $.extend({
-         height: '374px',
-         backgroundSize: '100%',
-         backgroundPosition: 'top left',
-         func: function(){} //calback placeholder
-      });
+         height: '0px',
+         animateDuration: 2000,
+         fadeDuration: 'slow',
+         opacity: 0.2,
+         callback: function(){} //calback placeholder
+      }, options);
        
       return this.each( function(){
-          $(this).css() //do something
+          $(this).animate({height: settings.height}, {duration: settings.animateDuration})
+            .fadeTo(settings.fadeDuration, settings.opacity)
+            .queue(settings.callback);
           
-          settings.func.call(); //execute callback
+          //settings.func.call(); //execute callback
       });
     };
 })(jQuery);

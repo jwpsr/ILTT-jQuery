@@ -111,6 +111,14 @@ function loadServiceAnimations(){
 	var opt1 = {
 		duration: 2000,
 	};
+	var options = {
+		height: prop1.height,
+		animateDuration: opt1.duration,
+		callback: function (next){
+						$(this).siblings('div').fadeIn('slow');
+						next();
+					}
+	};
 	
 	//click events
 	$('li', serviceArea).each(function (){
@@ -121,16 +129,8 @@ function loadServiceAnimations(){
 			//reset service area
 			servicesAnimationPrep();
 			
-			$(this).find('div > div').filter(':first-child')
-				.animagic({ height = prop1.height, duration = op1.duration }
-					,function (next){
-						$(this).siblings('div').fadeIn('slow');
-						next()
-					});
-				// .animate(prop1, opt1)
-				// .fadeTo('slow', 0.2)
-				// .queue(
-				// });
+			//using custom plugin!
+			$(this).find('div > div').filter(':first-child').animagic(options);
 			
 			//store active service item
 			activeServiceItem = $(this);
